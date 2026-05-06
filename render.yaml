@@ -1,6 +1,7 @@
 services:
-  - type: worker
+  - type: web
     name: goldenberry-ticket-bot
+    plan: free
     runtime: node
     buildCommand: npm install
     startCommand: npm start

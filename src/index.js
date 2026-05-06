@@ -73,3 +73,13 @@ if (fs.existsSync(modalsPath)) {
 
 
 client.login(process.env.TOKEN);
+
+// Simple HTTP server for Render free tier (Web Service)
+const http = require('http');
+const port = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.write('Bot is online!');
+  res.end();
+}).listen(port, () => {
+  console.log(`HTTP Server running on port ${port} for Render compliance.`);
+});
