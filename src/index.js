@@ -72,7 +72,17 @@ if (fs.existsSync(modalsPath)) {
 
 
 
-client.login(process.env.TOKEN);
+console.log('Attempting to log in to Discord...');
+if (!process.env.TOKEN) {
+  console.error('ERROR: TOKEN environment variable is missing!');
+} else {
+  console.log(`Token found (Length: ${process.env.TOKEN.length}).`);
+}
+
+client.login(process.env.TOKEN).catch(err => {
+  console.error('CRITICAL: Failed to log in to Discord!');
+  console.error(err);
+});
 
 // Simple HTTP server for Render free tier (Web Service)
 const http = require('http');
