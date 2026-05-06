@@ -72,21 +72,4 @@ if (fs.existsSync(modalsPath)) {
 
 
 
-if (!process.env.TOKEN) {
-  console.error('CRITICAL ERROR: TOKEN is missing in environment variables!');
-}
-
-client.login(process.env.TOKEN).catch(err => {
-  console.error('CRITICAL ERROR: Failed to login to Discord!');
-  console.error(err);
-});
-
-// Simple HTTP server for Render free tier (Web Service)
-const http = require('http');
-const port = process.env.PORT || 3000;
-http.createServer((req, res) => {
-  res.write('Bot is online!');
-  res.end();
-}).listen(port, () => {
-  console.log(`HTTP Server running on port ${port} for Render compliance.`);
-});
+client.login(process.env.TOKEN);
